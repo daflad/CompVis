@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B3F7E823-AF8B-481D-9AFC-2E7A1ADD4942</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ICP_3038_Assignment_One_Image_Processing</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>A35D0F91-E18D-4A92-8C40-FDBEF5D7EB43</key>
+		<string>ssh://github.com/daflad/CompVis.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ICP_3038_Assignment_One_Image_Processing.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>389038A6-F49B-4EB2-AAB2-825EB1998737</key>
+		<string>../../../ManipulatingPixelsTaskTwo</string>
+		<key>A35D0F91-E18D-4A92-8C40-FDBEF5D7EB43</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/daflad/CompVis.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>A35D0F91-E18D-4A92-8C40-FDBEF5D7EB43</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>A35D0F91-E18D-4A92-8C40-FDBEF5D7EB43</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CompVis</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>389038A6-F49B-4EB2-AAB2-825EB1998737</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ManipulatingPixelsTaskTwo</string>
+		</dict>
+	</array>
+</dict>
+</plist>

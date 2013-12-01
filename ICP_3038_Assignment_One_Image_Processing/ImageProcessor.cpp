@@ -58,15 +58,51 @@ void ImageProcessor::processImage(cv::Mat *img, bool v){
         float r = std::abs(rotation) * M_PI / 180;
         float w, h;
         // Calulate size of inner rectangle
-        if (out.cols < out.rows) {
+        if (out.cols == out.rows) {
             w = ((out.cols * std::cos(r)) - (out.rows * std::sin(r))) / std::cos(2*r);
             h = out.rows * (w / out.cols);
+            std::printf("Ratio\t::\t%.4f, %.4f\n", (float)out.cols/out.rows, w/h);
         } else {
-            h = ((out.rows * std::cos(r)) - (out.cols * std::sin(r))) / std::cos(2*r);
-            w = out.cols * (h / out.rows);
+            double m, s, xInter, yInter, boundHeight, boundWidth, xCent, yCent, dx, dy, wid, hei;
+
+            wid = out.cols;
+            hei = out.rows;
+            
+            boundHeight = (hei * std::cos(r)) + (wid * std::sin(r));
+            boundWidth = (wid * std::cos(r)) + (hei * std::sin(r));
+            
+            std::printf("Bounding\t\t:: %.2f, %.2f\n", boundWidth, boundHeight);
+            
+            m = (hei * std::cos(r)) / (-hei * std::sin(r));
+            s = hei / wid;
+            
+            std::printf("Ratio\t\t\t:: %i, %i\n", out.cols, out.rows);
+            
+            std::printf("Angles\t\t\t:: %.4f, %.4f\n", s, (float)out.rows / out.cols);
+            
+            std::printf("2nd Angles\t\t:: %.4f, %.4f\n", m, r);
+            xInter = (hei * std::cos(r)) / (s - m);
+            yInter = s * xInter;
+            
+            
+            std::printf("Intersection\t:: %.2f, %.2f\n", xInter, yInter);
+            
+            xCent = boundWidth / 2;
+            yCent = boundHeight / 2;
+            
+            std::printf("Center\t\t\t:: %.2f, %.2f\n", xCent, yCent);
+            
+            dx = xCent - xInter;
+            dy = yCent - yInter;
+            
+            w = 2 * dx;
+            h = 2 * dy;
+            
+            std::printf("Ratio\t::\t%.4f, %.4f\n", (float)out.cols/out.rows, w/h);
         }
+        
         // Extract from image
-        cv::getRectSubPix(out, cv::Size((int)w, (int)h), imgCenter, out);
+        cv::getRectSubPix(out, cv::Size(w, h), imgCenter, out);
     }
     // Update save image
     img_to_save = out.clone();

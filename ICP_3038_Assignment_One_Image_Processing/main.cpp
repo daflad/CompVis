@@ -57,7 +57,7 @@ void sharpnessCallback(int val, void *ipPtr){
 // Smaller range to ensure 0 can be found again.
 void rotationCallback(int val, void *ipPtr){
     ImageProcessor *ip = static_cast<ImageProcessor *>(ipPtr);
-    ip->rotation = (val - 30) * -1;
+    ip->rotation = (val - 3000) / -100;
     ip->processImage(&ip->hsv, true);
 }
 
@@ -72,7 +72,7 @@ void setupControlWindow(int imgWidth, ImageProcessor *imp){
     int brtness = 100;
     int conness = 100;
     int sharess = 150;
-    int rotness = 30;
+    int rotness = 3000;
     // Image window
     cv::namedWindow("image", CV_WINDOW_AUTOSIZE);
     // Control window
@@ -86,7 +86,7 @@ void setupControlWindow(int imgWidth, ImageProcessor *imp){
     cv::createTrackbar("Contrast", "control", &conness, 200, contrastCallback, imp);
     cv::createTrackbar("Sharpness", "control", &sharess, 300, sharpnessCallback, imp);
     cv::createTrackbar("Colourfullness", "control", &colness, 500, colourfullnessCallback, imp);
-    cv::createTrackbar("Rotation", "control", &rotness, 60, rotationCallback, imp);
+    cv::createTrackbar("Rotation", "control", &rotness, 6000, rotationCallback, imp);
     
 }
 
