@@ -24,14 +24,15 @@ class ImageProcessor {
     cv::Mat img_to_save;
     cv::Mat hsv;
     cv::Mat hsv_clone;
-    bool eq;
-    
+
+    double rotation;
     float brightness;
     float contrast;
     int colourfullness;
-    double rotation;
     int sharpness;
     int hist[256];
+    bool eq;
+    
     bool ERROR;
     string err;
     
@@ -48,11 +49,7 @@ class ImageProcessor {
     void getHist();
     cv::Mat* rotateImage(cv::Mat*);
     void writeImageToDisk(string path);
-    
-    static void brightnessCallback(int, void*);
-    static void contrastCallback(int, void*);
-    static void colourfullnessCallback(int, void*);
-    static void histEqCallback(int, void*);
+
 };
 
 #endif /* defined(__ICP_3038_Assignment_One_Image_Processing__ImageProcessor__) */

@@ -60,11 +60,11 @@
       <CommandLineArguments>
          <CommandLineArgument
             argument = "/Users/stephenjohnrussell/dev/CompVis/ICP_3038_Assignment_One_Image_Processing/bin/data/5.jpg"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "/Users/stephenjohnrussell/dev/CompVis/ICP_3038_Assignment_One_Image_Processing/bin/data/8.jpg"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "/Users/stephenjohnrussell/dev/CompVis/ICP_3038_Assignment_One_Image_Processing/bin/data/NewImage.jpg"

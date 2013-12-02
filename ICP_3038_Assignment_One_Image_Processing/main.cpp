@@ -67,26 +67,38 @@ void rotationCallback(int val, void *ipPtr){
 
 // Create windows and trackbars for application
 void setupControlWindow(int imgWidth, ImageProcessor *imp){
+    
     // Initial slider values
     int colness = 250;
     int brtness = 100;
     int conness = 100;
     int sharess = 150;
     int rotness = 3000;
+    
     // Image window
-    cv::namedWindow("image", CV_WINDOW_FREERATIO);
+    cv::namedWindow("image", CV_WINDOW_AUTOSIZE);
+    cv::moveWindow("image", 20, 0);
+    
     // Control window
     cv::namedWindow("control", CV_WINDOW_FREERATIO);
-    cv::resizeWindow("control", 400, 300);
-    cv::moveWindow("control", imgWidth + 20, 0);
-    //Create treackbars
-    //Brighthness, Contrast, Colourfullness, Sharpness and Histogram equalisa- tion
-    cv::createTrackbar("Brighthness", "control", &brtness, 200, brightnessCallback, imp);
+    //cv::resizeWindow("control", 400, 300);
+    cv::moveWindow("control", imgWidth + 40, 0);
+    
+    // Create treackbars
+    // Brighthness, Contrast, Colourfullness,
+    // Sharpness and Histogram equalisa- tion
+    
+    cv::createTrackbar("Brighthness", "control", &brtness, 200,
+                       brightnessCallback, imp);
     cv::createTrackbar("Hist Eq", "control", 0, 1, histEqCallback, imp);
-    cv::createTrackbar("Contrast", "control", &conness, 200, contrastCallback, imp);
-    cv::createTrackbar("Sharpness", "control", &sharess, 300, sharpnessCallback, imp);
-    cv::createTrackbar("Colourfullness", "control", &colness, 500, colourfullnessCallback, imp);
-    cv::createTrackbar("Rotation", "control", &rotness, 6000, rotationCallback, imp);
+    cv::createTrackbar("Contrast", "control", &conness, 200,
+                       contrastCallback, imp);
+    cv::createTrackbar("Sharpness", "control", &sharess, 300,
+                       sharpnessCallback, imp);
+    cv::createTrackbar("Colourfullness", "control", &colness, 500,
+                       colourfullnessCallback, imp);
+    cv::createTrackbar("Rotation", "control", &rotness, 6000,
+                       rotationCallback, imp);
     
 }
 
