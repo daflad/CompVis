@@ -58,48 +58,60 @@ void ImageProcessor::processImage(cv::Mat *img, bool v){
         float r = std::abs(rotation) * M_PI / 180;
         float w, h;
         // Calulate size of inner rectangle
-        if (out.cols == out.rows) {
-            w = ((out.cols * std::cos(r)) - (out.rows * std::sin(r))) / std::cos(2*r);
-            h = out.rows * (w / out.cols);
-            std::printf("Ratio\t::\t%.4f, %.4f\n", (float)out.cols/out.rows, w/h);
+//        if (out.cols == out.rows) {
+//            w = ((out.cols * std::cos(r)) - (out.rows * std::sin(r))) / std::cos(2*r);
+//            h = out.rows * (w / out.cols);
+//            std::printf("Ratio\t::\t%.4f, %.4f\n", (float)out.cols/out.rows, w/h);
+//        } else {
+//            double m, s, xInter, yInter, boundHeight, boundWidth, xCent, yCent, dx, dy, wid, hei;
+//
+//            wid = out.cols;
+//            hei = out.rows;
+//            
+//            boundHeight = (hei * std::cos(r)) + (wid * std::sin(r));
+//            boundWidth = (wid * std::cos(r)) + (hei * std::sin(r));
+//            
+//            std::printf("Bounding\t\t:: %.2f, %.2f\n", boundWidth, boundHeight);
+//            
+//            m = (hei * std::cos(r)) / (-hei * std::sin(r));
+//            s = hei / wid;
+//            
+//            std::printf("Ratio\t\t\t:: %i, %i\n", out.cols, out.rows);
+//            
+//            std::printf("Angles\t\t\t:: %.4f, %.4f\n", s, boundHeight/boundWidth);
+//            
+//            std::printf("2nd Angles\t\t:: %.4f, %.4f\n", m, r);
+//            xInter = (hei * std::cos(r)) / (s - m);
+//            yInter = s * xInter;
+//            
+//            
+//            std::printf("Intersection\t:: %.2f, %.2f\n", xInter, yInter);
+//            
+//            xCent = boundWidth / 2;
+//            yCent = boundHeight / 2;
+//            
+//            std::printf("Center\t\t\t:: %.2f, %.2f\n", xCent, yCent);
+//            
+//            dx = xCent - xInter;
+//            dy = yCent - yInter;
+//            
+//            w = 2 * dx;
+//            h = 2 * dy;
+//            
+//            std::printf("Ratio\t::\t%.4f, %.4f\n", (float)out.cols/out.rows, w/h);
+//        }
+        
+        float a = out.cols / 2.0f;
+        float b = out.rows / 2.0f;
+        float x;
+        if (a > b) {
+            x = (a * b) / ( (b * std::cos(r)) + (a * std::sin(r)) );
         } else {
-            double m, s, xInter, yInter, boundHeight, boundWidth, xCent, yCent, dx, dy, wid, hei;
-
-            wid = out.cols;
-            hei = out.rows;
-            
-            boundHeight = (hei * std::cos(r)) + (wid * std::sin(r));
-            boundWidth = (wid * std::cos(r)) + (hei * std::sin(r));
-            
-            std::printf("Bounding\t\t:: %.2f, %.2f\n", boundWidth, boundHeight);
-            
-            m = (hei * std::cos(r)) / (-hei * std::sin(r));
-            s = hei / wid;
-            
-            std::printf("Ratio\t\t\t:: %i, %i\n", out.cols, out.rows);
-            
-            std::printf("Angles\t\t\t:: %.4f, %.4f\n", s, (float)out.rows / out.cols);
-            
-            std::printf("2nd Angles\t\t:: %.4f, %.4f\n", m, r);
-            xInter = (hei * std::cos(r)) / (s - m);
-            yInter = s * xInter;
-            
-            
-            std::printf("Intersection\t:: %.2f, %.2f\n", xInter, yInter);
-            
-            xCent = boundWidth / 2;
-            yCent = boundHeight / 2;
-            
-            std::printf("Center\t\t\t:: %.2f, %.2f\n", xCent, yCent);
-            
-            dx = xCent - xInter;
-            dy = yCent - yInter;
-            
-            w = 2 * dx;
-            h = 2 * dy;
-            
-            std::printf("Ratio\t::\t%.4f, %.4f\n", (float)out.cols/out.rows, w/h);
+            x = (a * a) / ( (b * std::sin(r)) + (a * std::cos(r)) );
         }
+        
+        w = 2 * x;
+        h = out.rows * (w / out.cols);
         
         // Extract from image
         cv::getRectSubPix(out, cv::Size(w, h), imgCenter, out);

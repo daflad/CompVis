@@ -74,7 +74,7 @@ void setupControlWindow(int imgWidth, ImageProcessor *imp){
     int sharess = 150;
     int rotness = 3000;
     // Image window
-    cv::namedWindow("image", CV_WINDOW_AUTOSIZE);
+    cv::namedWindow("image", CV_WINDOW_FREERATIO);
     // Control window
     cv::namedWindow("control", CV_WINDOW_FREERATIO);
     cv::resizeWindow("control", 400, 300);
