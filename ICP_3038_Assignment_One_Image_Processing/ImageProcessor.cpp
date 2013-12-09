@@ -190,7 +190,7 @@ cv::Mat* ImageProcessor::rotateImage(cv::Mat *out) {
         if (a > b) {
             x = (a * b) / ( (b * std::cos(r)) + (a * std::sin(r)) );
         } else {
-            x = (a * a) / ( (b * std::sin(r)) + (a * std::cos   (r)) );
+            x = (a * a) / ( (b * std::sin(r)) + (a * std::cos(r)) );
         }
         
         // Calculate width as twic x coord and scale height.
