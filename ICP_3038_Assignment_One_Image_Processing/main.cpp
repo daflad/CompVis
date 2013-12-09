@@ -63,7 +63,6 @@ void rotationCallback(int val, void *ipPtr){
 
 //-----------------------------------------------------------------------
 // Image & control window setup
-//-----------------------------------------------------------------------
 
 // Create windows and trackbars for application
 void setupControlWindow(int imgWidth, ImageProcessor *imp){
@@ -90,7 +89,8 @@ void setupControlWindow(int imgWidth, ImageProcessor *imp){
     
     cv::createTrackbar("Brighthness", "control", &brtness, 200,
                        brightnessCallback, imp);
-    cv::createTrackbar("Hist Eq", "control", 0, 1, histEqCallback, imp);
+    cv::createTrackbar("Hist Eq", "control", 0, 1,
+                       histEqCallback, imp);
     cv::createTrackbar("Contrast", "control", &conness, 200,
                        contrastCallback, imp);
     cv::createTrackbar("Sharpness", "control", &sharess, 300,

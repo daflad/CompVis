@@ -10,7 +10,6 @@
 
 // Image Processing Setup
 //-----------------------------------------------------------------------
-
 ImageProcessor::ImageProcessor(string filePath) {
     // Init central values for image adjustments
     contrast = 1.0f;
@@ -34,9 +33,8 @@ ImageProcessor::ImageProcessor(string filePath) {
 
 // Image Display
 //-----------------------------------------------------------------------
-
 void ImageProcessor::processImage(cv::Mat *img, bool v){
-    // if V of HSV being adjested
+    // if V of HSV being adjusted
     if (v) {
         histEq();
         brightnessContrast();
@@ -108,7 +106,6 @@ void ImageProcessor::histEq() {
 
 // Image Adjustments
 //-----------------------------------------------------------------------
-
 // Reduce / boost sharpeness as:
 // gSharp = f + d(f - (b * f))
 // where:
@@ -208,7 +205,7 @@ cv::Mat* ImageProcessor::rotateImage(cv::Mat *out) {
 
 // Save Image To Disk
 //-----------------------------------------------------------------------
-
+// Write an image ot disk, informing the user along the way.
 void ImageProcessor::writeImageToDisk(string path) {
     if (cv::imwrite(path, img_to_save)){
         std::cout << "Image saved to : " << path << endl;
